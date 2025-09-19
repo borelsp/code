@@ -34,7 +34,7 @@ Construir as seguintes consultas:
 - Listar todos Clientes que não tenham realizado uma compra;
 
 Select 
-    first_name,last_name  
+    c.first_name,c.last_name  
 from 
     sales.customers c 
     left join sales.orders o 
@@ -45,7 +45,7 @@ where
 - Listar os Produtos que não tenham sido comprados
 
 Select
-    product_name
+    p.product_name
 From
     production.products p
     left join sales.order_items o
@@ -56,7 +56,7 @@ where
 - Listar os Produtos sem Estoque;
 
 Select
-    product_name
+    p.product_name
 From
     production.products p
     left join production.stocks e
@@ -87,7 +87,7 @@ group by m.brand_name,l.store_name
 - Listar os Funcionarios que não estejam relacionados a um Pedido.
 
 Select
-    first_name,last_name
+    f.first_name,f.last_name
 From
     sales.staffs f
     left join sales.orders o
