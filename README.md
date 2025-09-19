@@ -84,8 +84,25 @@ Where
    o.order_id is not null
 group by m.brand_name,l.store_name
 
-
 - Listar os Funcionarios que não estejam relacionados a um Pedido.
+
+Select
+    first_name,last_name
+From
+    sales.staffs f
+    left join sales.orders o
+    on f.staff_id = o.staff_id
+Where
+    o.order_id is null
+
+
+# conteudo
+  contem 5 query   
+
+# como usar
+  instalar o banco dados e restaurar
+  abrir o editor query SQL/PSL
+  executar as query
 
 ## Readme do Repositório
 
