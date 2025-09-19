@@ -32,8 +32,31 @@ Para entender o modelo, revisar o diagrama a seguir:
 Construir as seguintes consultas:
 
 - Listar todos Clientes que não tenham realizado uma compra;
+
+Select 
+    first_name,last_name  
+from 
+    sales.customers c 
+    left join sales.orders o 
+    on c.customer_id = o.custumer_id
+where
+    o.order_id is null
+
 - Listar os Produtos que não tenham sido comprados
+
+Select
+    product_name
+From
+    production.products p
+    left join sales.order_items o
+    on p.product_id = o.product_id
+where 
+    o.quantity = 0
+
+
 - Listar os Produtos sem Estoque;
+
+
 - Agrupar a quantidade de vendas que uma determinada Marca por Loja. 
 - Listar os Funcionarios que não estejam relacionados a um Pedido.
 
