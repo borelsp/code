@@ -51,13 +51,40 @@ From
     left join sales.order_items o
     on p.product_id = o.product_id
 where 
-    o.quantity = 0
-
+    o.order_id is null
 
 - Listar os Produtos sem Estoque;
 
+Select
+    product_name
+From
+    production.products p
+    left join production.stocks e
+    on p.product_id = e.product_id
+Where
+    e.quantity = 0
 
 - Agrupar a quantidade de vendas que uma determinada Marca por Loja. 
+
+Select
+    l.store_name,
+    m.brand_name,
+    count(o.order_id) as Qtde
+From
+    sales.orders o
+    join sales.stores l
+    on o.store_id = l.store_id
+    join sales.order_item i
+    on o.order_id = i.order_id
+    join production.products p
+    on i.product_id = p.product_id
+    join production.brands m
+    p.brand_id = m.brand_id
+Where
+   o.order_id is not null
+group by m.brand_name,l.store_name
+
+
 - Listar os Funcionarios que não estejam relacionados a um Pedido.
 
 ## Readme do Repositório
